@@ -1,0 +1,202 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For the One Who Blushes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: linear-gradient(-45deg, #fbb1bd, #c8d4ff, #c2b2f0);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #413b61;
+      padding: 1rem;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #413b61;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #413b61;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      color: #413b61;
+    }
+
+    button, .download-link {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      color: #413b61;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-bottom: 1rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    button:hover, .download-link:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .secret-message, .whispers, .flower, .story, .counter, .letter, .gallery {
+      display: none;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #413b61;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 2rem;
+      text-align: center;
+      width: 100%;
+      font-size: 0.8rem;
+      color: #413b61;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.5rem; }
+      p { font-size: 1rem; }
+      button, .download-link {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .glass-card { padding: 1.5rem; }
+      h1 { font-size: 1.3rem; }
+      p { font-size: 0.95rem; }
+      button, .download-link { font-size: 0.9rem; }
+      footer { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body contenteditable="false">
+  <div class="glass-card">
+    <h1>For the One Who Blushes Before Words</h1>
+    <p>
+      I noticed you — the way you hide, the way you wait, the way your silence says more than a thousand smiles.<br><br>
+      If you feel this is about you… then it is.<br><br>
+      Say nothing. Just feel. And when you're ready, I’ll be where I’ve always been… waiting.
+    </p>
+
+    <button onclick="showElement('secret')">Click if your heart whispered 'yes'</button>
+    <div class="secret-message" id="secret">
+      "Some souls meet not by accident but by longing that never spoke out loud."
+    </div>
+
+    <button onclick="showElement('whispers')">Read My Silent Notes</button>
+    <div class="whispers" id="whispers">
+      “You never had to speak. Your silence always did.”<br>
+      “Even the mountains of Shimla know what your eyes said.”
+    </div>
+
+    <button onclick="showElement('flower')">Make This Bloom</button>
+    <div class="flower" id="flower">
+      🌸 "This bloomed just because you visited."
+    </div>
+
+    <button onclick="showElement('gallery')">If You’ve Come This Far...</button>
+    <div class="gallery" id="gallery">
+      “You're still here... so this must mean something.”
+    </div>
+
+    <button onclick="showElement('counter')">How Long I’ve Waited</button>
+    <div class="counter" id="counter">That's how long my heart’s been quietly hoping: 476 days.</div>
+
+    <button onclick="showElement('story')">Our Unspoken Story</button>
+    <div class="story" id="story">
+      ➤ “He saw her before she saw him...”<br>
+      ➤ “She smiled at everyone. But hid from him...”<br>
+      ➤ “He waited. Because he knew she wasn’t ready to be found.”
+    </div>
+
+    <button onclick="showElement('letter')">Unwritten Letter</button>
+    <div class="letter" id="letter">
+      "If words could find you, I’d never stop writing…"
+    </div>
+
+    <button onclick="alert('Thank you. That’s all I needed.')">I Felt This Too</button>
+
+    <!-- 🟣 NEW CODE DOWNLOAD BUTTON -->
+    <button onclick="downloadCode()">⬇️ Download This Page as HTML</button>
+  </div>
+
+  <footer>
+    Made by avneetkumar.corporate | avneetkumarindia | Avneet.Kumar 🏡✨🇮🇳
+  </footer>
+
+  <script>
+    function showElement(id) {
+      document.getElementById(id).classList.toggle('visible');
+    }
+
+    function countDays() {
+      const startDate = new Date("2024-04-04");
+      const today = new Date();
+      const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+      document.getElementById("counter").innerText = `That's how long my heart’s been quietly hoping: ${diff} days.`;
+    }
+
+    countDays();
+
+    // 🟣 Code download logic
+    function downloadCode() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "shywhispers.html";
+      a.click();
+    }
+  </script>
+
+</body></html>
